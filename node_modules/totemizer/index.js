@@ -116,6 +116,11 @@ void function(root){
         }
     }
 
+    util.enslave = function (fn) {
+        return function(){
+            return fn.bind(null, this).apply(null, arguments)
+        }
+    }
 
     if ( module !== undefined && module.exports ) {
         module.exports = util

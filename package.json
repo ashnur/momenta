@@ -8,14 +8,15 @@
     "prepublish": "npm test"
   },
   "dependencies": {
-    "totemizer": "~0.0.2"
+    "totemizer": "~0.0.2",
+    "rationals": "0.0.8"
   },
   "devDependencies": {
     "mocha": "*",
     "expect.js": "*"
   },
   "repository": {
-    "type":"git",
+    "type": "git",
     "url": "git://github.com/ashnur/momentum.git"
   },
   "bugs": {
