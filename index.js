@@ -11,17 +11,11 @@ void function(root){
         return vector
     }
 
-    function gcd(vector){ return vector.reduce(gcd) }
-
     function dot_product(A, B){
         return u.zipWith(
-            function(){return u.slice(arguments).reduce(function(p, c){
-                return p.mul(c)
-            })}
+            function(){return u.slice(arguments).reduce(r.mul)}
             , A, B
-        ).reduce(function(p, c){
-            return p.add(c)
-        })
+        ).reduce(r.add)
     }
 
     function cross_product(){ throw new Error('not implemented') }
@@ -37,11 +31,11 @@ void function(root){
     }
 
     function addition(A, B){
-        return u.zipWith( function(p, c){ return p.add(c) } , A, B)
+        return u.zipWith( r.add , A, B)
     }
 
     function subtraction(A, B){
-        return u.zipWith( function(p, c){ return p.sub(c) } , A ,B)
+        return u.zipWith( r.sub , A ,B)
     }
 
     function v(arr){
@@ -64,6 +58,13 @@ void function(root){
     }
 
     momentum.r = r
+    momentum.zero_vector = zero_vector
+    momentum.scale = u.enslave(scalar_multiplication)
+    momentum.disperse = u.enslave(scalar_division)
+    momentum.add  = u.enslave(addition)
+    momentum.sub  = u.enslave(subtraction)
+    momentum.mul  = u.enslave(addition)
+    momentum.dot  = u.enslave(dot_product)
 
 
     if ( typeof module !== 'undefined' && module.exports ) {
