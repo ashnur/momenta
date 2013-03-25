@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "totemizer": "~0.0.2",
-    "rationals": "0.0.8"
+    "rationals": "0.0.8",
+    "boo": "~1.2.4"
   },
   "devDependencies": {
     "mocha": "*",

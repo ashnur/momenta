@@ -1,16 +1,9 @@
 void function(root){
 
-    var momentum = Object.create(null)
-        , u = require('totemizer')
+    var u = require('totemizer')
+        , r = require('rationals')
+        , boo = require('boo')
         ;
-
-    function add(p,c){ return Number(p||0)+Number(c||0) }
-
-    function subtract(p,c){ return Number(p||0)-Number(c||0) }
-
-    function multiply(p,c){ return Number(p||0)*Number(c||0) }
-
-    function divide(p,c){ return Number(p||0)/Number(c||0) }
 
     function zero_vector(size){
         var vector = [];
@@ -20,58 +13,58 @@ void function(root){
 
     function gcd(vector){ return vector.reduce(gcd) }
 
-    function dot_product(){
-        return u.zipWithArray(
-            function(){return u.slice(arguments).reduce(multiply)}
-            , u.slice(arguments)
-        ).reduce(add)
+    function dot_product(A, B){
+        return u.zipWith(
+            function(){return u.slice(arguments).reduce(function(p, c){
+                return p.mul(c)
+            })}
+            , A, B
+        ).reduce(function(p, c){
+            return p.add(c)
+        })
     }
 
     function cross_product(){ throw new Error('not implemented') }
 
     function scalar_multiplication(vector, scalar){
-        return vector.map(function(v, i){ return Number(v)*Number(scalar) })
+        scalar = r.checkInput(scalar)
+        return vector.map(function(v){ return v.mul(scalar) })
     }
 
     function scalar_division(vector, scalar){
-        return vector.map(
-            function(v, i){
-                return momentum.scalar_operations.divide(v, scalar)
-            }
-        )
+        scalar = r.checkInput(scalar)
+        return vector.map( function(v, i){ return v.div(scalar) })
     }
 
-    function addition(){
-        return u.zipWithArray(
-            function(p, c){
-                return momentum.scalar_operations.add(p,c)
-            }
-            , u.slice(arguments)
-        )
+    function addition(A, B){
+        return u.zipWith( function(p, c){ return p.add(c) } , A, B)
     }
 
-    function subtraction(){
-        return u.zipWithArray(
-            function(p, c){
-                return momentum.scalar_operations.sub(p,c)
-            }
-            , u.slice(arguments)
-        )
+    function subtraction(A, B){
+        return u.zipWith( function(p, c){ return p.sub(c) } , A ,B)
     }
 
-    momentum.scalar_operations = {
-        add : add
-        , sub : subtract
-        , mul : multiply
+    function v(arr){
+        var inst = arr.map(r.checkInput)
+        inst.__proto__ = v.prototype
+        return inst
+    }
+    v.prototype = Object.create(Array.prototype)
+
+    v.prototype.scale = u.enslave(scalar_multiplication)
+    v.prototype.disperse = u.enslave(scalar_division)
+    v.prototype.add  = u.enslave(addition)
+    v.prototype.sub  = u.enslave(subtraction)
+    v.prototype.mul  = u.enslave(addition)
+    v.prototype.dot  = u.enslave(dot_product)
+
+
+    function momentum(arr){
+        return v(arr)
     }
 
-    momentum.scale = scalar_multiplication
-    momentum.disperse = scalar_division
+    momentum.r = r
 
-    momentum.add  = addition
-    momentum.sub  = subtraction
-    momentum.mul  = addition
-    momentum.dot  = dot_product
 
     if ( typeof module !== 'undefined' && module.exports ) {
         module.exports = momentum
