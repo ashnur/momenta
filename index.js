@@ -21,59 +21,26 @@ void function(root){
     function cross_product(){ throw new Error('not implemented') }
 
     function scalar_multiplication(vector, scalar){
-        scalar = r.checkInput(scalar)
         return vector.map(function(v){ return v.mul(scalar) })
     }
 
     function scalar_division(vector, scalar){
-        scalar = r.checkInput(scalar)
         return vector.map( function(v, i){ return v.div(scalar) })
     }
 
-    function addition(A, B){
-        return u.zipWith( r.add , A, B)
-    }
+    function addition(A, B){ return u.zipWith( r.add , A, B) }
 
-    function subtraction(A, B){
-        return u.zipWith( r.sub , A ,B)
-    }
+    function subtraction(A, B){ return u.zipWith( r.sub , A ,B) }
 
-    function v(arr){
-        var inst = arr.map(r.checkInput)
-        if ( inst.__proto__ ) {
-            inst.__proto__ = v.prototype
-        } else {
-            inst.scale = u.enslave(scalar_multiplication)
-            inst.disperse = u.enslave(scalar_division)
-            inst.add  = u.enslave(addition)
-            inst.sub  = u.enslave(subtraction)
-            inst.mul  = u.enslave(addition)
-            inst.dot  = u.enslave(dot_product)
-        }
-        return inst
-    }
-    v.prototype = Object.create(Array.prototype)
-
-    v.prototype.scale = u.enslave(scalar_multiplication)
-    v.prototype.disperse = u.enslave(scalar_division)
-    v.prototype.add  = u.enslave(addition)
-    v.prototype.sub  = u.enslave(subtraction)
-    v.prototype.mul  = u.enslave(addition)
-    v.prototype.dot  = u.enslave(dot_product)
-
-
-    function momentum(arr){
-        return v(arr)
-    }
+    function momentum(arr){ return arr.map(r.checkInput) }
 
     momentum.r = r
     momentum.zero_vector = zero_vector
-    momentum.scale = u.enslave(scalar_multiplication)
-    momentum.disperse = u.enslave(scalar_division)
-    momentum.add  = u.enslave(addition)
-    momentum.sub  = u.enslave(subtraction)
-    momentum.mul  = u.enslave(addition)
-    momentum.dot  = u.enslave(dot_product)
+    momentum.scale = scalar_multiplication
+    momentum.disperse = scalar_division
+    momentum.add  = addition
+    momentum.sub  = subtraction
+    momentum.dot  = dot_product
 
 
     if ( typeof module !== 'undefined' && module.exports ) {
