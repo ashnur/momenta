@@ -43,12 +43,12 @@ void function(root){
         if ( inst.__proto__ ) {
             inst.__proto__ = v.prototype
         } else {
-            inst.scale = u.enslave(scalar_multiplication)
-            inst.disperse = u.enslave(scalar_division)
-            inst.add  = u.enslave(addition)
-            inst.sub  = u.enslave(subtraction)
-            inst.mul  = u.enslave(addition)
-            inst.dot  = u.enslave(dot_product)
+            inst.prototype.scale = u.enslave(scalar_multiplication)
+            inst.prototype.disperse = u.enslave(scalar_division)
+            inst.prototype.add  = u.enslave(addition)
+            inst.prototype.sub  = u.enslave(subtraction)
+            inst.prototype.mul  = u.enslave(addition)
+            inst.prototype.dot  = u.enslave(dot_product)
         }
         return inst
     }
