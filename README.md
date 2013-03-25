@@ -57,10 +57,21 @@ m([3,7,11]).add(m([2,4,6])) // [1,3,5]
 ```
 m([1,3,5]).dot(m([7,11,13])) // 105
 ```
+# Good to know
+the above examples are true only in browsers with support of \_\_proto\_\_
+
+`momentum` works in some other browsers too, but this means, that you have
+to recast `momentum()` on every return value, so that the methods are added.
+
+I know this is slow as hell, and I might change this in the future, if it's
+going to be an issue.
+
 
 # Install
 ```
 npm install momentum
 ```
 
+
+**You can use it in the browser with [browserify](http://browserify.org/)**
 

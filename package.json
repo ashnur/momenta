@@ -1,7 +1,7 @@
 {
   "name": "momentum",
   "description": "Basic vector operations",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
