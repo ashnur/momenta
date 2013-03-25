@@ -40,7 +40,16 @@ void function(root){
 
     function v(arr){
         var inst = arr.map(r.checkInput)
-        inst.__proto__ = v.prototype
+        if ( inst.__proto__ ) {
+            inst.__proto__ = v.prototype
+        } else {
+            inst.scale = u.enslave(scalar_multiplication)
+            inst.disperse = u.enslave(scalar_division)
+            inst.add  = u.enslave(addition)
+            inst.sub  = u.enslave(subtraction)
+            inst.mul  = u.enslave(addition)
+            inst.dot  = u.enslave(dot_product)
+        }
         return inst
     }
     v.prototype = Object.create(Array.prototype)
