@@ -1,15 +1,15 @@
 {
   "name": "momentum",
   "description": "Basic vector operations",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
     "prepublish": "npm test"
   },
   "dependencies": {
-    "totemizer": "~0.0.2",
-    "rationals": "0.0.11"
+    "totemizer": "~0.0.5",
+    "rationals": "~0.0.13"
   },
   "devDependencies": {
     "mocha": "*",
