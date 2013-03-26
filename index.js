@@ -2,7 +2,6 @@ void function(root){
 
     var u = require('totemizer')
         , r = require('rationals')
-        , boo = require('boo')
         ;
 
     function zero_vector(size){
