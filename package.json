@@ -41,9 +41,11 @@
     ],
     "harness": "mocha"
   },
-  "keywords": [ "vectors", "vector operations"  ],
+  "keywords": [
+    "vectors",
+    "vector operations"
+  ],
   "author": "ashnur",
   "license": "DAFUQ",
   "readmeFilename": "README.md"
-
 }
