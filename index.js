@@ -40,6 +40,7 @@ void function(root){
     momentum.add  = addition
     momentum.sub  = subtraction
     momentum.dot  = dot_product
+    momentum.gcd  = function(vector){ return vector.reduce(r.gcd) }
 
 
     if ( typeof module !== 'undefined' && module.exports ) {
