@@ -1,7 +1,7 @@
 {
   "name": "momentum",
   "description": "Basic vector operations",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "totemizer": "~0.0.5",
-    "rationals": "~0.1.0"
+    "rationals": "~0.1.1"
   },
   "devDependencies": {
     "mocha": "*",
