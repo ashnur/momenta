@@ -13,7 +13,7 @@ m([1])[0] === m.r(1); // true
 ```
 
 while in the case of *rationals* it made sense to keep direct equality between the
-created objects, I think this is not the case with momentum.
+created objects, I think this is not the case with momentumi.
 However this might change some time in the future.
 
 Another issue is that no matter how much I wish, there isn't a good, widely supported
@@ -78,6 +78,11 @@ m.sub(m([3,7,11]), m([2,4,6])) // [1/1,3/1,5/1]
 m.dot(m([1,3,5]), m([7,11,13])) // 105/1
 ```
 
+#### Cross product
+##### `cross`
+```
+m.cross(m([1,3,5]), m([7,11,13])) // [-16/1, 22/1, -10/1]
+```
 
 # Install
 ```
