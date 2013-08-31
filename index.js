@@ -17,7 +17,11 @@ void function(root){
         ).reduce(r.add)
     }
 
-    function cross_product(){ throw new Error('not implemented') }
+    function cross_product(v1, v2){
+        return [(v1[1].mul(v2[2])).sub(v2[1].mul(v1[2]))
+                , (v1[2].mul(v2[0])).sub(v2[2].mul(v1[0]))
+                , (v1[0].mul(v2[1])).sub(v2[0].mul(v1[1]))]
+    }
 
     function scalar_multiplication(vector, scalar){
         return vector.map(function(v){ return v.mul(scalar) })
@@ -37,10 +41,11 @@ void function(root){
     momentum.zero_vector = zero_vector
     momentum.scale = scalar_multiplication
     momentum.disperse = scalar_division
-    momentum.add  = addition
-    momentum.sub  = subtraction
-    momentum.dot  = dot_product
-    momentum.gcd  = function(vector){ return vector.reduce(r.gcd) }
+    momentum.add = addition
+    momentum.sub = subtraction
+    momentum.dot = dot_product
+    momentum.cross = cross_product
+    momentum.gcd = function(vector){ return vector.reduce(r.gcd) }
 
 
     if ( typeof module !== 'undefined' && module.exports ) {

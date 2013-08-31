@@ -10,6 +10,9 @@ describe('basic vector operations → ', function(){
     it('should cast elements in an array to rational numbers', function(){
         expect(m([1])[0]).to.be(r(1))
     })
+    it('return vector with given size, all values equal to zero', function(){
+        expect(m.zero_vector(13)).to.eql([0,0,0,0,0,0,0,0,0,0,0,0,0])
+    })
     it('should multiply each element with the scalar', function(){
         expect(m.scale(m([1,3,5,7,11,13]), r(13))).to
             .eql(m([13,39,65,91,143,169]))
@@ -28,5 +31,8 @@ describe('basic vector operations → ', function(){
     it('should divide each element with the scalar', function(){
         expect(m.disperse(m([1,4,7,9,16]),r(12))).to
             .eql(m([r(1,12),r(1,3),r(7,12),r(3,4),r(4,3)]))
+    })
+    it('should return the cross product of the input vectors', function(){
+        expect(m.cross(m([1,3,5]), m([7,11,13]))).to.eql(m([-16,22,-10]))
     })
 })

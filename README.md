@@ -17,13 +17,13 @@ created objects, I think this is not the case with momentum.
 However this might change some time in the future.
 
 Another issue is that no matter how much I wish, there isn't a good, widely supported
-way to subclass array (not untile es6 is widely supported). The workarounds available
+way to subclass array (not until es6 is widely supported). The workarounds available
 kinda create more problems than they solve, so after a day of thinking I went
 in the minimalist direction. This also means, that while momentum methods expect
 arrays and scalars with add, sub, scale, disperse, dot methods on them, the module's
 user should provide these methods.
 
-Probably worth to mention, that the API gives you easy solution to this:
+Probably worth to mention that the API gives you easy solution to this:
 
 ```
 var m = require('momentum');
