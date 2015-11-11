@@ -8,12 +8,13 @@
     "prepublish": "npm test"
   },
   "dependencies": {
-    "totemizer": "~0.0.5",
-    "rationals": "~0.1.2"
+    "es5-shim": "^4.3.0",
+    "rationals": "^0.1.9",
+    "totemizer": "0.0.9"
   },
   "devDependencies": {
-    "mocha": "*",
-    "expect.js": "*"
+    "expect.js": "^0.3.1",
+    "mocha": "^2.3.3"
   },
   "repository": {
     "type": "git",
