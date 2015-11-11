@@ -35,23 +35,23 @@ void function(root){
 
     function subtraction(A, B){ return u.zipWith( r.sub , A ,B) }
 
-    function momentum(arr){ return arr.map(r.checkInput) }
+    function momenta(arr){ return arr.map(r.checkInput) }
 
-    momentum.r = r
-    momentum.zero_vector = zero_vector
-    momentum.scale = scalar_multiplication
-    momentum.disperse = scalar_division
-    momentum.add = addition
-    momentum.sub = subtraction
-    momentum.dot = dot_product
-    momentum.cross = cross_product
-    momentum.gcd = function(vector){ return vector.reduce(r.gcd) }
+    momenta.r = r
+    momenta.zero_vector = zero_vector
+    momenta.scale = scalar_multiplication
+    momenta.disperse = scalar_division
+    momenta.add = addition
+    momenta.sub = subtraction
+    momenta.dot = dot_product
+    momenta.cross = cross_product
+    momenta.gcd = function(vector){ return vector.reduce(r.gcd) }
 
 
     if ( typeof module !== 'undefined' && module.exports ) {
-        module.exports = momentum
+        module.exports = momenta
     } else {
-        root.factory = momentum
+        root.factory = momenta
     }
 
 }(this)
